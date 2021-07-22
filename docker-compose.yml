@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  mongodb:
+    image : mongo
+    container_name: sejutacita-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: sejutacita-user
+      MONGO_INITDB_ROOT_PASSWORD: 4fe19e3b-0d64-484d-8963-17c581e3d803
+    ports:
+    - 27017:27017
+    restart: unless-stopped
+    networks:
+      - sejutacita-net
+
+networks:
+  sejutacita-net:
+    name: sejutacita_net
