@@ -1,4 +1,4 @@
-# Test Sejuta Cita Crud with Auth
+# Test SejutaCita Crud with Auth
 SejutaCita test, crud + auth with NodeJS Nest Framework
 
 ## Installation
