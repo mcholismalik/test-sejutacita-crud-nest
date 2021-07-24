@@ -22,7 +22,7 @@ $ npm run start:prod
   [https://localhost:3001/doc](https://localhost:3001/doc)
 
 
-# Diagram
+## Diagram
 ![Screenshot](diagram.png)
 
 ## Tech stack
