@@ -21,6 +21,10 @@ $ npm run start:prod
 - Open swagger document
   [https://localhost:3001/doc](https://localhost:3001/doc)
 
+
+# Diagram
+![Screenshot](diagram.png)
+
 ## Tech stack
 - Framework - [NestJS](https://nestjs.com/)
 - Database - [MongoDB](https://www.mongodb.com/)
