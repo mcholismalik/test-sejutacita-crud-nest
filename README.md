@@ -17,10 +17,28 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Sample
+We also can make seed data sample for this service, please run this command first
+
+```bash
+# run seed
+$ npx nestjs-command create:user
+```
+
+Here the credentials to login
+```bash
+# admin
+$ username: admin
+$ password: Asd123!@#
+
+# member
+$ username: member
+$ password: Asd123!@#
+```
+
 ## Guide
 - Open swagger document
   [https://localhost:3001/doc](https://localhost:3001/doc)
-
 
 ## Diagram
 ![Screenshot](diagram.png)
