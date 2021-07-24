@@ -9,17 +9,15 @@ async function bootstrap() {
   const logger = new Logger('bootstrap')
   const serverConfig = config.get('server')
 
-  const app = await NestFactory.create(AppModule, {
-    logger: ['error', 'warn'],
-  })
-  app.setGlobalPrefix('api/v1')
+  const app = await NestFactory.create(AppModule)
   app.useGlobalInterceptors(new ResponseInterceptor())
   app.enableCors()
 
   // swagger
   const options = new DocumentBuilder()
-    .setTitle('API Doc test-sejutacita-crud-nest')
-    .setDescription('Authored by Muhammad Cholis Malik')
+    .setTitle('test-sejutacita-crud-nest')
+    .setDescription('API Documentation for test-sejutacita-crud-nest service')
+    .setContact('Muhammad Cholis Malik', 'https://www.linkedin.com/in/mcholismalik', 'mcholismalik.official@gmail.com')
     .setVersion('1.0')
     .addBearerAuth({ type: 'http', scheme: 'bearer', bearerFormat: 'Token' }, 'access-token')
     .build()

@@ -1,6 +1,7 @@
 import { IsString, MaxLength, IsEmail, IsNumber, MinLength, Matches, IsOptional, IsEnum } from 'class-validator'
 import { ApiProperty } from '@nestjs/swagger'
-import { RoleEnum } from 'src/schemas/role.schema'
+import { RoleEnum } from 'src/lib/constant/role.constant'
+import { GenderEnum } from 'src/lib/constant/gender.constant'
 
 export class UpdateUserDto {
   @ApiProperty()
@@ -28,7 +29,7 @@ export class UpdateUserDto {
 
   @ApiProperty()
   @IsOptional()
-  @IsString()
+  @IsEnum(GenderEnum)
   gender: string
 
   @ApiProperty()

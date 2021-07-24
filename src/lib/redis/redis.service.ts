@@ -27,9 +27,11 @@ export class RedisService implements OnModuleInit {
     this.flushAll().then(() => this.redisLogger.log(`redis flush all successfully`))
   }
 
-  async get(key: any) {
+  async get(key: any, isParseToJson = true) {
     const get = promisify(this.redisClient.get).bind(this.redisClient)
-    return await get(key)
+    const value = await get(key)
+    const result = isParseToJson ? this.parseToJson(value) : value
+    return result
   }
 
   async set(key: any, value: any) {
@@ -46,4 +48,9 @@ export class RedisService implements OnModuleInit {
     const flushAll = promisify(this.redisClient.flushall).bind(this.redisClient)
     return await flushAll()
   }
+
+  parseToJson(value: any) {
+    return JSON.parse(value)
+  }
+
 }

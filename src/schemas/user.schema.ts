@@ -1,6 +1,5 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose'
 import { Document } from 'mongoose'
-import { Exclude } from 'class-transformer'
 
 @Schema()
 export class User extends Document {
@@ -30,14 +29,6 @@ export class User extends Document {
 
   @Prop({ type: String, required: true, enum: ["admin", "member"] })
   role: string
-}
-
-export class UserView extends User {
-  @Exclude()
-  salt: string
-
-  @Exclude()
-  password: string
 }
 
 export const UserSchema = SchemaFactory.createForClass(User)

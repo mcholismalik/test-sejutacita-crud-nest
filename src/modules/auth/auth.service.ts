@@ -20,7 +20,7 @@ export class AuthService {
       await user.save()
 
       // save cache
-      const userCache = JSON.stringify(user)
+      const userCache = JSON.stringify(user.toObject())
       this.redisService.set(user.id, userCache)
 
       return user
