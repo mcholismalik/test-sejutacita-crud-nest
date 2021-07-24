@@ -15,7 +15,7 @@ async function bootstrap() {
 
   // swagger
   const options = new DocumentBuilder()
-    .setTitle('test-sejutacita-crud-nest')
+    .setTitle('API Doc test-sejutacita-crud-nest')
     .setDescription('API Documentation for test-sejutacita-crud-nest service')
     .setContact('Muhammad Cholis Malik', 'https://www.linkedin.com/in/mcholismalik', 'mcholismalik.official@gmail.com')
     .setVersion('1.0')
