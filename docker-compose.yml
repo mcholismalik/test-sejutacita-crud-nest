@@ -7,10 +7,34 @@ services:
       MONGO_INITDB_ROOT_USERNAME: sejutacita-user
       MONGO_INITDB_ROOT_PASSWORD: 4fe19e3b-0d64-484d-8963-17c581e3d803
     ports:
-    - 27017:27017
-    restart: unless-stopped
+      - 27017:27017
+    volumes:
+      - sejutacita-mongodb:/data/db
+    restart: always
     networks:
       - sejutacita-net
+  redis:
+    image: "redis:alpine"
+    container_name: sejutacita-redis
+    command: redis-server --requirepass 21541e54-d91c-4c4b-ab94-26fa5a46a654
+    environment:
+      - REDIS_REPLICATION_MODE=master
+    ports:
+      - "6379:6379"
+    volumes:
+      - sejutacita-redis:/var/lib/redis
+      - sejutacita-redis-conf:/usr/local/etc/redis/redis.conf
+    restart: always
+    networks: 
+      - sejutacita-net
+
+volumes:
+  sejutacita-mongodb:
+    external: true
+  sejutacita-redis:
+    external: true
+  sejutacita-redis-conf:
+    external: true
 
 networks:
   sejutacita-net:

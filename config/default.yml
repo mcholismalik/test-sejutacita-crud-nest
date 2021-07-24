@@ -1,0 +1,18 @@
+server:
+  port: 3001
+
+jwt:
+  expiresIn: 36000
+  secret: 's3cr3tk3y!'
+
+mongodb:
+  host: 'localhost'
+  port: 27017
+  user: 'sejutacita-user'
+  password: '4fe19e3b-0d64-484d-8963-17c581e3d803'
+
+redis:
+  host: 'localhost'
+  port: 6379
+  password: '21541e54-d91c-4c4b-ab94-26fa5a46a654'
+  expire: 86400
