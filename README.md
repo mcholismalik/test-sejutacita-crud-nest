@@ -15,6 +15,9 @@ $ npm run start:dev
 
 # prod
 $ npm run start:prod
+
+# docker 
+$ docker compose up
 ```
 
 ## Sample
