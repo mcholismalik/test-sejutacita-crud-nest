@@ -45,8 +45,17 @@ $ npx nestjs-command create:user
 ```
 
 ## Guide
-- Open swagger document
-  [https://localhost:3001/doc](https://localhost:3001/doc)
+This service consists of some route :
+- POST /auth/sign-up
+- POST /auth/sign-in
+- GET /user
+- GET /user/:id
+- POST /user
+- PUT /user/:id
+- DELETE /user/:id
+
+More detail you can open swagger :
+- [https://localhost:3001/doc](https://localhost:3001/doc)
 
 ## Diagram
 ![Screenshot](diagram.png)
@@ -55,6 +64,7 @@ $ npx nestjs-command create:user
 - Framework - [NestJS](https://nestjs.com/)
 - Database - [MongoDB](https://www.mongodb.com/)
 - Cache - [Redis](https://redis.io/)
+- Deployment - [Docker](https://www.docker.com/), [Kompose](https://kompose.io/), [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 ## Stay in touch
 - Author - [Muhammad Cholis Malik](https://www.linkedin.com/in/mcholismalik/)
