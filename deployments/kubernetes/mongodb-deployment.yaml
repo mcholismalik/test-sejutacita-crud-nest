@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.23.0 (bc7d9f4f)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mongodb
+  name: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: mongodb
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.23.0 (bc7d9f4f)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/sejutacita_net: "true"
+        io.kompose.service: mongodb
+    spec:
+      containers:
+        - env:
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: 4fe19e3b-0d64-484d-8963-17c581e3d803
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: sejutacita-user
+          image: mongo
+          name: sejutacita-mongodb
+          ports:
+            - containerPort: 27017
+          resources: {}
+          volumeMounts:
+            - mountPath: /data/db
+              name: sejutacita-mongodb
+      restartPolicy: Always
+      volumes:
+        - name: sejutacita-mongodb
+          persistentVolumeClaim:
+            claimName: sejutacita-mongodb
+status: {}
