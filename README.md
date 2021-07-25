@@ -17,11 +17,11 @@ $ npm run start:dev
 $ npm run start:prod
 
 # docker 
-$ cd deployments/docker
+$ cd deployments
 $ docker compose up
 
 # kubernetes
-$ cd deployments/kubernetes
+$ cd deployments
 $ kompose -f docker-compose.yml
 $ kubectl apply -f api-service.yaml,mongodb-service.yaml,redis-service.yaml,api-deployment.yaml,sejutacita_net-networkpolicy.yaml,mongodb-deployment.yaml,sejutacita-mongodb-presistentvolumeclaim.yaml,redis-deployment.yaml,sejutacita-redis-presistentvolumeclaim.yaml,sejutacita-redis-conf-presistentvolumeclaim.yaml
 ```
