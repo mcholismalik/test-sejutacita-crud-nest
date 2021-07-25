@@ -23,7 +23,7 @@ $ docker compose up
 # kubernetes
 $ cd deployments
 $ kompose -f docker-compose.yml
-$ kubectl apply -f api-service.yaml,mongodb-service.yaml,redis-service.yaml,api-deployment.yaml,sejutacita_net-networkpolicy.yaml,mongodb-deployment.yaml,sejutacita-mongodb-presistentvolumeclaim.yaml,redis-deployment.yaml,sejutacita-redis-presistentvolumeclaim.yaml,sejutacita-redis-conf-presistentvolumeclaim.yaml
+$ kubectl apply -f api-service.yaml,mongodb-service.yaml,redis-service.yaml,api-deployment.yaml,sejutacita_net-networkpolicy.yaml,mongodb-deployment.yaml,sejutacita-mongodb-persistentvolumeclaim.yaml,redis-deployment.yaml,sejutacita-redis-persistentvolumeclaim.yaml,sejutacita-redis-conf-persistentvolumeclaim.yaml
 ```
 
 ## Documentation
