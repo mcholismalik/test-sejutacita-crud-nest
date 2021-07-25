@@ -1,4 +1,5 @@
 import * as config from 'config'
 
 const getConfig = config.get('mongodb')
-export const mongodbConfig = `mongodb://${getConfig.user}:${getConfig.password}@${getConfig.host}:${getConfig.port}`
+const host =  process.env.MONGODB_HOST || getConfig.host
+export const mongodbConfig = `mongodb://${getConfig.user}:${getConfig.password}@${host}:${getConfig.port}`

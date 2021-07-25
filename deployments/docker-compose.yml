@@ -32,11 +32,17 @@ services:
   api:
     image: "mcholismalik/test-sejutacita-crud-nest:latest" 
     container_name: sejutacita-api
+    environment:
+      - MONGODB_HOST=sejutacita-mongodb
+      - REDIS_HOST=sejutacita-redis
     ports:
       - "3001:3001"
     restart: always
     networks:
       - sejutacita-net
+    depends_on:
+      - mongodb
+      - redis
 
 volumes:
   sejutacita-mongodb:

@@ -16,7 +16,7 @@ export class RedisService implements OnModuleInit {
 
   init(): void {
     this.redisClient = redis.createClient({
-      host: this.redisConfig.host,
+      host: process.env.REDIS_HOST || this.redisConfig.host,
       port: this.redisConfig.port,
       password: this.redisConfig.password
     })
