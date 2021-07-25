@@ -17,6 +17,7 @@ $ npm run start:dev
 $ npm run start:prod
 
 # docker 
+$ cd deployments
 $ docker compose up
 ```
 
@@ -37,8 +38,6 @@ You also can create manually
 # run seed
 $ npx nestjs-command create:user
 ```
-
-
 
 ## Guide
 - Open swagger document

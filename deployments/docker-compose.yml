@@ -29,16 +29,14 @@ services:
     networks: 
       - sejutacita-net
   
-  # api:
-  #   build: 
-  #     context: .
-  #     dockerfile: Dockerfile
-  #   container_name: sejutacita-api
-  #   ports:
-  #     - "3001:3001"
-  #   restart: always
-  #   networks:
-  #     - sejutacita-net
+  api:
+    image: "mcholismalik/test-sejutacita-crud-nest:latest" 
+    container_name: sejutacita-api
+    ports:
+      - "3001:3001"
+    restart: always
+    networks:
+      - sejutacita-net
 
 volumes:
   sejutacita-mongodb:
