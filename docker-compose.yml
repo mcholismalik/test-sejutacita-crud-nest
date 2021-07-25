@@ -13,6 +13,7 @@ services:
     restart: always
     networks:
       - sejutacita-net
+  
   redis:
     image: "redis:alpine"
     container_name: sejutacita-redis
@@ -27,6 +28,17 @@ services:
     restart: always
     networks: 
       - sejutacita-net
+  
+  # api:
+  #   build: 
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: sejutacita-api
+  #   ports:
+  #     - "3001:3001"
+  #   restart: always
+  #   networks:
+  #     - sejutacita-net
 
 volumes:
   sejutacita-mongodb:

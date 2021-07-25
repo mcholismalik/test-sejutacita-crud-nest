@@ -4,12 +4,18 @@ import { Logger } from '@nestjs/common'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { ResponseInterceptor } from './lib/response/response.interceptor'
 import * as config from 'config'
+import { SeedService } from './lib/seed/seed.service';
 
 async function bootstrap() {
   const logger = new Logger('bootstrap')
   const serverConfig = config.get('server')
 
   const app = await NestFactory.create(AppModule)
+
+  // seed
+  const seedService = app.get(SeedService)
+  await seedService.create()
+
   app.useGlobalInterceptors(new ResponseInterceptor())
   app.enableCors()
 

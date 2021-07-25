@@ -21,14 +21,7 @@ $ docker compose up
 ```
 
 ## Sample
-We also can make seed data sample for this service, please run this command first
-
-```bash
-# run seed
-$ npx nestjs-command create:user
-```
-
-Here the credentials to login
+We create seed data sample in service init, credentials :
 ```bash
 # admin
 $ username: admin
@@ -38,6 +31,14 @@ $ password: Asd123!@#
 $ username: member
 $ password: Asd123!@#
 ```
+
+You also can create manually 
+```bash
+# run seed
+$ npx nestjs-command create:user
+```
+
+
 
 ## Guide
 - Open swagger document
