@@ -7,5 +7,5 @@ RUN npm run build
 
 FROM node:16-alpine
 WORKDIR /app
-COPY --from=builder /app ./
-CMD ["npm", "run", "start:prod"]
+COPY --from=builder /app/dist ./dist
+CMD ["node", "dist/main"]
