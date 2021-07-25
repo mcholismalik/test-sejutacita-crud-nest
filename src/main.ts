@@ -14,7 +14,9 @@ async function bootstrap() {
 
   // seed
   const seedService = app.get(SeedService)
-  seedService.create()
+  seedService.create().catch(err => {
+    logger.log(`seed error`)
+  })
 
   app.useGlobalInterceptors(new ResponseInterceptor())
   app.enableCors()
