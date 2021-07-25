@@ -54,4 +54,4 @@ volumes:
 
 networks:
   sejutacita-net:
-    name: sejutacita_net
+    name: sejutacita-net

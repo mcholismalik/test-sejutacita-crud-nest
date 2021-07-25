@@ -14,7 +14,7 @@ async function bootstrap() {
 
   // seed
   const seedService = app.get(SeedService)
-  await seedService.create()
+  seedService.create()
 
   app.useGlobalInterceptors(new ResponseInterceptor())
   app.enableCors()

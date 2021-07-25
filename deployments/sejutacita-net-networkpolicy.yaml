@@ -2,13 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   creationTimestamp: null
-  name: sejutacita_net
+  name: sejutacita-net
 spec:
   ingress:
     - from:
         - podSelector:
             matchLabels:
-              io.kompose.network/sejutacita_net: "true"
+              io.kompose.network/sejutacita-net: "true"
   podSelector:
     matchLabels:
-      io.kompose.network/sejutacita_net: "true"
+      io.kompose.network/sejutacita-net: "true"

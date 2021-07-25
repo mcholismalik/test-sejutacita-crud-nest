@@ -21,7 +21,7 @@ spec:
         kompose.version: 1.23.0 (bc7d9f4f)
       creationTimestamp: null
       labels:
-        io.kompose.network/sejutacita_net: "true"
+        io.kompose.network/sejutacita-net: "true"
         io.kompose.service: api
     spec:
       containers:
