@@ -26,6 +26,19 @@ $ kompose -f docker-compose.yml
 $ kubectl apply -f api-service.yaml,mongodb-service.yaml,redis-service.yaml,api-deployment.yaml,sejutacita_net-networkpolicy.yaml,mongodb-deployment.yaml,sejutacita-mongodb-presistentvolumeclaim.yaml,redis-deployment.yaml,sejutacita-redis-presistentvolumeclaim.yaml,sejutacita-redis-conf-presistentvolumeclaim.yaml
 ```
 
+## Documentation
+This service consists of some route :
+- POST /auth/sign-up
+- POST /auth/sign-in
+- GET /user
+- GET /user/:id
+- POST /user
+- PUT /user/:id
+- DELETE /user/:id
+
+More detail you can open swagger :
+- [https://localhost:3001/doc](https://localhost:3001/doc)
+
 ## Sample
 We create seed data sample in service init, credentials :
 ```bash
@@ -43,19 +56,6 @@ You also can create manually
 # run seed
 $ npx nestjs-command create:user
 ```
-
-## Guide
-This service consists of some route :
-- POST /auth/sign-up
-- POST /auth/sign-in
-- GET /user
-- GET /user/:id
-- POST /user
-- PUT /user/:id
-- DELETE /user/:id
-
-More detail you can open swagger :
-- [https://localhost:3001/doc](https://localhost:3001/doc)
 
 ## Diagram
 ![Screenshot](diagram.png)
