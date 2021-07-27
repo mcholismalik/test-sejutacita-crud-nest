@@ -7,41 +7,37 @@ import { UpdateUserDto } from './dto/update-user.dto'
 import { RedisService } from 'src/lib/redis/redis.service'
 import { User, UserConfig } from 'src/schemas/user.schema'
 import { RoleEnum } from 'src/lib/constant/role.constant'
+import { GetUserDto } from './dto/get-user.dto'
 
 @Injectable()
 export class UserService {
   constructor(@InjectModel(UserConfig.modelName) private userModel: Model<User>, private redisService: RedisService) { }
 
-  checkRoleCondition(auth: User) {
-    const condition = {
-      db: {},
-      redis: ''
-    }
-    switch (auth.role) {
-      case RoleEnum.MEMBER: {
-        condition.redis = auth.id
-        condition.db = { _id: auth.id }
-      }
-    }
-
-    return condition
-  }
-
-  async getUsers(auth: User): Promise<User[]> {
+  async getUsers(auth: User, getUserDto: GetUserDto): Promise<User[]> {
     // check role
     let cond = {}
-    switch (auth.role) {
-      case RoleEnum.MEMBER: {
-        cond = { _id: auth.id }
-      }
+    if (auth.role !== RoleEnum.ADMIN) {
+      cond = { _id: auth.id }
     }
 
-    return await this.userModel.find(cond)
+    const pagination = {
+      page: (getUserDto.page || 1) - 1,
+      pageSize: getUserDto.pageSize || 10,
+      sort: getUserDto.sort || 'created_at',
+      sortBy: getUserDto.sortBy === 'asc' ? 1 : -1
+    }
+    return this.userModel.find(cond, [], {
+      skip: pagination.page * pagination.pageSize,
+      limit: pagination.pageSize,
+      sort: {
+        [pagination.sort]: pagination.sortBy
+      }
+    })
   }
 
   async getUserByID(auth: User, id: string): Promise<User> {
     // check role
-    if (auth.role === RoleEnum.MEMBER && auth.id !== id) {
+    if (auth.role !== RoleEnum.ADMIN && auth.id !== id) {
       throw new UnauthorizedException('not allowed to request this id')
     }
 

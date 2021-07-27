@@ -1,4 +1,4 @@
-import { Controller, Post, UsePipes, ValidationPipe, Body, Get, Param, Put, Delete, UseGuards } from '@nestjs/common'
+import { Controller, Post, UsePipes, ValidationPipe, Body, Get, Param, Put, Delete, UseGuards, Query } from '@nestjs/common'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UserService } from './user.service'
 import { ApiTags, ApiBody, ApiBearerAuth } from '@nestjs/swagger'
@@ -8,6 +8,7 @@ import { ResponsePayload } from 'src/lib/response/response.payload'
 import { RolesGuard } from 'src/middleware/authorization/roles.guard'
 import { GetAuth } from '../auth/decorator/auth.decorator'
 import { User } from 'src/schemas/user.schema'
+import { GetUserDto } from './dto/get-user.dto'
 
 @ApiTags('user')
 @ApiBearerAuth('access-token')
@@ -17,8 +18,8 @@ export class UserController {
   constructor(private readonly userService: UserService) { }
 
   @Get()
-  async getUsers(@GetAuth() auth: User): Promise<ResponsePayload> {
-    const data = await this.userService.getUsers(auth)
+  async getUsers(@GetAuth() auth: User, @Query() getUserDto: GetUserDto): Promise<ResponsePayload> {
+    const data = await this.userService.getUsers(auth, getUserDto)
     return new ResponsePayload(`get users success`, data)
   }
 

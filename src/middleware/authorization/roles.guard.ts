@@ -12,9 +12,6 @@ export class RolesGuard implements CanActivate {
     const user = req.user
 
     const permission = RolePermission[user.role].findIndex(e => e.path === path && e.method === method)
-
-    console.log({ path, method, user, permission })
-
     if (permission === -1) {
       throw new UnauthorizedException('not allowed to access this route')
     }

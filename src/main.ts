@@ -1,23 +1,28 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { Logger } from '@nestjs/common'
+import { Logger, ValidationPipe } from '@nestjs/common'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { ResponseInterceptor } from './lib/response/response.interceptor'
 import * as config from 'config'
 import { SeedService } from './lib/seed/seed.service';
+import * as mongoose from 'mongoose';
 
 async function bootstrap() {
   const logger = new Logger('bootstrap')
   const serverConfig = config.get('server')
+
+  // db
+  mongoose.set('debug', true)
 
   const app = await NestFactory.create(AppModule)
 
   // seed
   const seedService = app.get(SeedService)
   seedService.create().catch(err => {
-    logger.log(`seed error`)
+    logger.log(err.message)
   })
 
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
   app.useGlobalInterceptors(new ResponseInterceptor())
   app.enableCors()
 
