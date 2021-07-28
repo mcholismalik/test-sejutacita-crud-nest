@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  mongodb:
+  sejutacita-mongodb:
     image : mongo
     container_name: sejutacita-mongodb
     environment:
@@ -14,7 +14,7 @@ services:
     networks:
       - sejutacita-net
   
-  redis:
+  sejutacita-redis:
     image: "redis:alpine"
     container_name: sejutacita-redis
     command: redis-server --requirepass 21541e54-d91c-4c4b-ab94-26fa5a46a654
@@ -29,7 +29,7 @@ services:
     networks: 
       - sejutacita-net
   
-  api:
+  sejutacita-api:
     image: "mcholismalik/test-sejutacita-crud-nest:latest" 
     container_name: sejutacita-api
     environment:
@@ -41,8 +41,8 @@ services:
     networks:
       - sejutacita-net
     depends_on:
-      - mongodb
-      - redis
+      - sejutacita-mongodb
+      - sejutacita-redis
 
 volumes:
   sejutacita-mongodb:

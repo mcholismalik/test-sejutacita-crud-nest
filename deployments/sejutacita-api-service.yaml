@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.23.0 (bc7d9f4f)
   creationTimestamp: null
   labels:
-    io.kompose.service: mongodb
-  name: mongodb
+    io.kompose.service: sejutacita-api
+  name: sejutacita-api
 spec:
   ports:
-    - name: "27017"
-      port: 27017
-      targetPort: 27017
+    - name: "3001"
+      port: 3001
+      targetPort: 3001
   selector:
-    io.kompose.service: mongodb
+    io.kompose.service: sejutacita-api
 status:
   loadBalancer: {}

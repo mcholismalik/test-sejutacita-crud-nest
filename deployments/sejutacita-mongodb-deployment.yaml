@@ -6,13 +6,13 @@ metadata:
     kompose.version: 1.23.0 (bc7d9f4f)
   creationTimestamp: null
   labels:
-    io.kompose.service: mongodb
-  name: mongodb
+    io.kompose.service: sejutacita-mongodb
+  name: sejutacita-mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: mongodb
+      io.kompose.service: sejutacita-mongodb
   strategy:
     type: Recreate
   template:
@@ -23,7 +23,7 @@ spec:
       creationTimestamp: null
       labels:
         io.kompose.network/sejutacita-net: "true"
-        io.kompose.service: mongodb
+        io.kompose.service: sejutacita-mongodb
     spec:
       containers:
         - env:
