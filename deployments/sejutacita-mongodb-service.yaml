@@ -9,10 +9,12 @@ metadata:
     io.kompose.service: sejutacita-mongodb
   name: sejutacita-mongodb
 spec:
+  type: NodePort
   ports:
     - name: "27017"
       port: 27017
       targetPort: 27017
+      nodePort: 30002
   selector:
     io.kompose.service: sejutacita-mongodb
 status:

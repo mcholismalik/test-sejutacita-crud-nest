@@ -9,10 +9,12 @@ metadata:
     io.kompose.service: sejutacita-redis
   name: sejutacita-redis
 spec:
+  type: NodePort
   ports:
     - name: "6379"
       port: 6379
       targetPort: 6379
+      nodePort: 30003
   selector:
     io.kompose.service: sejutacita-redis
 status:
